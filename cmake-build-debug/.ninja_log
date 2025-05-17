@@ -1,0 +1,16 @@
+# ninja log v6
+28	4107	7691032341155169	CMakeFiles/ItemLib.dir/Greedy.cpp.obj	70c9d53cb94508c1
+16	4130	7691032341037939	CMakeFiles/ItemLib.dir/Item.cpp.obj	7808a5189386107e
+41	4357	7691032341291303	CMakeFiles/ItemLib.dir/Backtracking.cpp.obj	fc0f301a4b846d12
+80	4383	7691032341687048	CMakeFiles/ItemLib.dir/LaundryProgramDataBase.cpp.obj	8aca7d79af47872c
+4384	4993	7691032384698947	libItemLib.a	73f69e94207c9d52
+114	5474	7691032342023042	CMakeFiles/OptiWash.dir/main.cpp.obj	522a03156afe964b
+5475	6023	7691032395608311	OptiWash.exe	3015557b26437533
+45	4301	7691032527963586	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	183056d217749914
+50	4810	7691032528023051	CMakeFiles/run_tests.dir/tests.cpp.obj	bb3009bf917a42e7
+39	14577	7691032527912749	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	82f6bd1f21cf7e88
+14579	19514	7691032673309171	lib/libgtest.a	137747fab2df1186
+19514	19615	7691032722660229	lib/libgtest_main.a	87e8791c5aa19799
+19615	25072	7691032723665130	run_tests.exe	a3e7b2cfdc6c3073
+128	3240	7691712105603460	CMakeFiles/run_tests.dir/tests.cpp.obj	bb3009bf917a42e7
+3241	8844	7691712136732450	run_tests.exe	a3e7b2cfdc6c3073
