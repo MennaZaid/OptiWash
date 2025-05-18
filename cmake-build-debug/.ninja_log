@@ -14,3 +14,12 @@
 19615	25072	7691032723665130	run_tests.exe	a3e7b2cfdc6c3073
 128	3240	7691712105603460	CMakeFiles/run_tests.dir/tests.cpp.obj	bb3009bf917a42e7
 3241	8844	7691712136732450	run_tests.exe	a3e7b2cfdc6c3073
+93	2454	7692960566469066	CMakeFiles/ItemLib.dir/Item.cpp.obj	7808a5189386107e
+106	2613	7692960566592677	CMakeFiles/ItemLib.dir/Backtracking.cpp.obj	fc0f301a4b846d12
+102	2636	7692960566560725	CMakeFiles/ItemLib.dir/Greedy.cpp.obj	70c9d53cb94508c1
+113	2704	7692960566670356	CMakeFiles/ItemLib.dir/LaundryProgramDataBase.cpp.obj	8aca7d79af47872c
+2704	3037	7692960592586314	libItemLib.a	73f69e94207c9d52
+122	4387	7692960566759564	CMakeFiles/run_tests.dir/tests.cpp.obj	bb3009bf917a42e7
+4388	8500	7692960609409343	run_tests.exe	a3e7b2cfdc6c3073
+190	2610	7692964041440354	CMakeFiles/run_tests.dir/tests.cpp.obj	bb3009bf917a42e7
+2611	5944	7692964065645953	run_tests.exe	a3e7b2cfdc6c3073

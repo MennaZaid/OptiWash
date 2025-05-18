@@ -45,10 +45,7 @@ public:
 
     static string getColorCategory(const string& color);
 
-    static bool isCompatibleWithLoad(const Item& newItem,
-                                     const vector<Item>& load,
-                                     int maxLoadSize,
-                                     bool separateWhites);
+    static bool isCompatibleWithLoad(const Item& item, const std::vector<Item>& load, int maxLoadSize, bool separateWhites, bool relaxedMode = false);
 
 };
 

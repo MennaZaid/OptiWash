@@ -4,7 +4,8 @@
 
 #include "Greedy.h"
 
-Greedy::Greedy(const vector<Item>& items, int maxLoadSize, bool separateWhites): items(items), maxLoadSize(maxLoadSize), separateWhites(separateWhites) {}
+Greedy::Greedy(const vector<Item>& items, int maxLoadSize, bool separateWhites, bool relaxedMode)
+    : items(items), maxLoadSize(maxLoadSize), separateWhites(separateWhites), relaxedMode(relaxedMode) {}
 
 vector<vector<Item>> Greedy::pack() {
     // Step 1: Sort priority items first
@@ -21,11 +22,12 @@ vector<vector<Item>> Greedy::pack() {
 
         // Try to place item in an existing load
         for (auto& load : loads) {
-            if (Item::isCompatibleWithLoad(item, load, maxLoadSize, separateWhites)) {
+            if (Item::isCompatibleWithLoad(item, load, maxLoadSize, separateWhites, relaxedMode)) {
                 load.push_back(item);
                 placed = true;
                 break;
             }
+
         }
 
         // If not placed, create a new load for it

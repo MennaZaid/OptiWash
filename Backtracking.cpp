@@ -4,8 +4,8 @@
 
 using namespace std;
 
-Backtracking::Backtracking(const vector<Item>& items, int maxLoadSize, bool separateWhites)
-    : items(items), maxLoadSize(maxLoadSize), separateWhites(separateWhites) {}
+Backtracking::Backtracking(const vector<Item>& items, int maxLoadSize, bool separateWhites, bool relaxedMode)
+    : items(items), maxLoadSize(maxLoadSize), separateWhites(separateWhites), relaxedMode(relaxedMode) {}
 
 vector<vector<Item>> Backtracking::pack() {
     bestSolution.clear();
@@ -30,11 +30,12 @@ void Backtracking::backtrack(int index, vector<vector<Item>>& currentLoads) {
 
     // Try adding to existing loads
     for (int i = 0; i < (int)currentLoads.size(); ++i) {
-        if (Item::isCompatibleWithLoad(item, currentLoads[i], maxLoadSize, separateWhites)) {
+        if (Item::isCompatibleWithLoad(item, currentLoads[i], maxLoadSize, separateWhites, relaxedMode)) {
             currentLoads[i].push_back(item);
             backtrack(index + 1, currentLoads);
             currentLoads[i].pop_back();
         }
+
     }
 
     // Try creating a new load

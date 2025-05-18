@@ -13,16 +13,14 @@ private:
     vector<Item> items;
     int maxLoadSize;
     bool separateWhites;
+    bool relaxedMode;
 
 public:
-
-    Greedy(const vector<Item>& items, int maxLoadSize, bool separateWhites);
-
+    Greedy(const vector<Item>& items, int maxLoadSize, bool separateWhites, bool relaxedMode = false);
 
     vector<vector<Item>> pack();
+};
 
-
-    };
 
 
 

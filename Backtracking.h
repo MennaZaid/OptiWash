@@ -14,12 +14,14 @@ private:
     vector<Item> items;
     int maxLoadSize;
     bool separateWhites;
+    bool relaxedMode;
+
     vector<vector<Item>> bestSolution;
 
     void backtrack(int index, vector<vector<Item>>& currentLoads);
 
 public:
-    Backtracking(const vector<Item>& items, int maxLoadSize, bool separateWhites);
+    Backtracking(const vector<Item>& items, int maxLoadSize, bool separateWhites, bool relaxedMode = false);
 
     vector<vector<Item>> pack();
 };

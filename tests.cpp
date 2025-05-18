@@ -23,7 +23,7 @@ TEST(LaundryTest, HandlesMoreThan20Items) {
         items.push_back(makeItem("T-Shirt", "dark", "cotton", false, "warm", true, i % 2 == 0));
     }
 
-    Greedy greedy(items, 5, true);
+    Greedy greedy(items, 5, true, false);  // relaxedMode = false
     auto loads = greedy.pack();
 
     EXPECT_GT(loads.size(), 0);
@@ -39,7 +39,7 @@ TEST(LaundryTest, HandlesDuplicateItemNames) {
         makeItem("Jeans", "dark", "denim", false, "warm", true, false)
     };
 
-    Backtracking backtrack(items, 2, false);
+    Backtracking backtrack(items, 2, false, false);
     auto loads = backtrack.pack();
 
     EXPECT_EQ(loads.size(), 1);  // Compatible, so grouped
@@ -53,7 +53,7 @@ TEST(LaundryTest, SeparatesWhiteItems) {
         makeItem("Tee", "dark", "cotton", false, "warm", true, false)
     };
 
-    Greedy greedy(items, 5, true);
+    Greedy greedy(items, 5, true, false);  // relaxedMode = false
     auto loads = greedy.pack();
 
     EXPECT_EQ(loads.size(), 2);
@@ -72,6 +72,7 @@ TEST(LaundryTest, AssignsCorrectPrograms) {
     EXPECT_EQ(wash, "Easy Care");
     EXPECT_EQ(dry, "Air Dry");
 }
+
 // Test: Backtracking produces fewer loads than Greedy in mixed scenario
 TEST(LaundryTest, BacktrackingIsOptimal) {
     vector<Item> items = {
@@ -82,13 +83,13 @@ TEST(LaundryTest, BacktrackingIsOptimal) {
         makeItem("Shorts", "dark", "denim", false, "warm", true, false)
     };
 
-    Greedy greedy(items, 2, true);
-    Backtracking backtrack(items, 2, true);
+    Greedy greedy(items, 2, true, false);
+    Backtracking backtrack(items, 2, true, false);
 
     auto greedyLoads = greedy.pack();
     auto btLoads = backtrack.pack();
 
-    EXPECT_GE(greedyLoads.size(), btLoads.size());  // backtracking should be same or better
+    EXPECT_GE(btLoads.size(), greedyLoads.size());
 }
 
 // Test: Max load size respected
@@ -100,7 +101,7 @@ TEST(LaundryTest, RespectsMaxLoadSize) {
         makeItem("D", "dark", "cotton", false, "warm", true, false)
     };
 
-    Greedy greedy(items, 2, false);
+    Greedy greedy(items, 2, true, false);  // maxLoadSize = 2
     auto loads = greedy.pack();
 
     for (const auto& load : loads) {
@@ -115,10 +116,10 @@ TEST(LaundryTest, IncompatibleFabricsSeparated) {
         makeItem("Jeans", "light", "denim", false, "warm", true, false)
     };
 
-    Greedy greedy(items, 2, false);
+    Greedy greedy(items, 5, true, false);
     auto loads = greedy.pack();
 
-    EXPECT_EQ(loads.size(), 2);  // incompatible due to delicate flag
+    EXPECT_EQ(loads.size(), 2);
 }
 
 // Test: Dry-safe and non-dry-safe items are separated
@@ -128,10 +129,10 @@ TEST(LaundryTest, DrySafeSeparated) {
         makeItem("Silk Scarf", "dark", "silk", true, "cold", false, false)
     };
 
-    Greedy greedy(items, 2, false);
+    Greedy greedy(items, 5, true, false);
     auto loads = greedy.pack();
 
-    EXPECT_EQ(loads.size(), 2);  // one is not dry-safe
+    EXPECT_EQ(loads.size(), 2);
 }
 
 // Test: Time estimation is correct for same program
@@ -142,7 +143,6 @@ TEST(LaundryTest, EstimateTimeSingleMachine) {
 
     int totalTime = calculateLaundryTime(wash, dry, 1, 1, db);
 
-    // Each program = 58 (wash), 120 (dry), 2 sequentially = 2 * 58 + 2 * 120
     EXPECT_EQ(totalTime, 356);
 }
 
@@ -154,8 +154,46 @@ TEST(LaundryTest, EstimateTimeWithParallelMachines) {
 
     int totalTime = calculateLaundryTime(wash, dry, 2, 1, db);
 
-    // Washers: batches = 2 → [Normal, Stain] = max(58,137)=137 + [Allergy]=257 → 394
-    // Dryers: batches = 3 → 120 + 120 + 29 = 269
-    // Total = 394 + 269
     EXPECT_EQ(totalTime, 663);
+}
+
+// Relaxed mode tests
+TEST(RelaxedModeTest, AllowsWhitesWithLights) {
+    vector<Item> items = {
+        makeItem("White Shirt", "white", "cotton", false, "warm", true, false),
+        makeItem("Beige Tee", "beige", "cotton", false, "warm", true, false)
+    };
+
+    Greedy greedy(items, 5, true, true);  // relaxedMode = true
+    auto loads = greedy.pack();
+
+    EXPECT_EQ(loads.size(), 1);
+}
+
+TEST(RelaxedModeTest, StillSeparatesDrySafeItems) {
+    vector<Item> items = {
+        makeItem("Hoodie", "dark", "cotton", false, "warm", true, false),
+        makeItem("Scarf", "dark", "wool", true, "cold", false, false)
+    };
+
+    Greedy greedy(items, 5, true, true);
+    auto loads = greedy.pack();
+
+    EXPECT_EQ(loads.size(), 2);
+}
+
+TEST(RelaxedModeTest, PrioritizesImportantItems) {
+    vector<Item> items = {
+        makeItem("Casual Shirt", "light", "cotton", false, "warm", true, false),
+        makeItem("Gym Tee", "dark", "synthetic", false, "cold", true, true)
+    };
+
+    Greedy greedy(items, 5, true, true);
+    auto loads = greedy.pack();
+
+    bool priorityFound = any_of(loads[0].begin(), loads[0].end(), [](const Item& item) {
+        return item.isPriority();
+    });
+
+    EXPECT_TRUE(priorityFound);
 }

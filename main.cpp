@@ -37,6 +37,10 @@ int main() {
     cout << "Enter number of laundry items: ";
     cin >> n;
     cin.ignore(); // consume leftover newline
+    string relaxedModeStr;
+    cout << "Enable relaxed mode (safe compromises)? (yes/no): ";
+    cin >> relaxedModeStr;
+    bool relaxedMode = (relaxedModeStr == "yes");
 
     for (int i = 0; i < n; ++i) {
         cout << "\nEnter details for item " << (i + 1) << ":\n";
@@ -60,7 +64,7 @@ int main() {
         for (const auto& c : darkColors) cout << c << ", ";
         cout << "\b\b)\n> ";
         getline(cin, color);
-        
+
         cout << "Fabric (e.g., cotton, wool): ";
         getline(cin, fabric);
 
@@ -86,10 +90,17 @@ int main() {
     cout << "\nEnter maximum load size (number of items per load): ";
     cin >> maxLoadSize;
 
-    string separateWhitesStr;
-    cout << "Separate whites into their own load? (yes/no): ";
-    cin >> separateWhitesStr;
-    bool separateWhites = (separateWhitesStr == "yes");
+    bool separateWhites = true;  // default if strict
+
+    if (!relaxedMode) {
+        string separateWhitesStr;
+        cout << "Separate whites into their own load? (yes/no): ";
+        cin >> separateWhitesStr;
+        separateWhites = (separateWhitesStr == "yes");
+    } else {
+        cout << "(Note: Whites may be mixed with lights in relaxed mode — skipping separation question.)\n";
+        separateWhites = false;
+    }
 
     int washers, dryers;
     cout << "Enter number of washing machines available: ";
@@ -99,7 +110,7 @@ int main() {
     cin >> dryers;
 
     // Run Greedy packing
-    Greedy greedyPacker(items, maxLoadSize, separateWhites);
+    Greedy greedyPacker(items, maxLoadSize, separateWhites, relaxedMode);
     vector<vector<Item>> greedyLoads = greedyPacker.pack();
 
     // Assign programs
@@ -116,7 +127,7 @@ int main() {
     cout << "Estimated total laundry time (Greedy): " << greedyTotalTime << " minutes.\n\n";
 
     // Run Backtracking packing
-    Backtracking backtrackingPacker(items, maxLoadSize, separateWhites);
+    Backtracking backtrackingPacker(items, maxLoadSize, separateWhites, relaxedMode);
     vector<vector<Item>> backtrackingLoads = backtrackingPacker.pack();
 
     vector<string> backtrackingWashPrograms, backtrackingDryPrograms;

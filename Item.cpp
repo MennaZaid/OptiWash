@@ -44,35 +44,41 @@ string Item::getColorCategory(const string& color) {
     return "unknown";
 }
 
-bool Item::isCompatibleWithLoad(const Item& item,
-                                 const vector<Item>& load,
-                                 int maxLoadSize,
-                                 bool separateWhites) {
-    if (load.size() >= maxLoadSize) return false;
+bool Item::isCompatibleWithLoad(const Item& item, const vector<Item>& load, int maxLoadSize, bool separateWhites, bool relaxedMode) {
+    if ((int)load.size() >= maxLoadSize) return false;
 
-    string itemColorCat = getColorCategory(item.getColor());
+    string itemColorGroup = getColorCategory(item.color);
+    string itemTemp = item.washTemp;
 
-    for (const Item& existing : load) {
-        string existingColorCat = getColorCategory(existing.getColor());
+    for (const auto& existing : load) {
+        string existingColorGroup = getColorCategory(existing.color);
 
-        // Constraint: Color separation
-        if (separateWhites) {
-            if (itemColorCat == "white" && existingColorCat != "white") return false;
-            if (itemColorCat != "white" && existingColorCat == "white") return false;
+        // Color rule
+        if (!relaxedMode) {
+            if (separateWhites && (itemColorGroup == "white" || existingColorGroup == "white") && itemColorGroup != existingColorGroup)
+                return false;
         } else {
-            if (itemColorCat != existingColorCat) return false;
+            // relaxed: allow white with light, but not dark
+            if ((itemColorGroup == "white" && existingColorGroup == "dark") ||
+                (itemColorGroup == "dark" && existingColorGroup == "white"))
+                return false;
         }
 
-        // Constraint: Wash temperature match
-        if (item.getWashTemp() != existing.getWashTemp()) return false;
+        // Temperature rule
+        if (!relaxedMode) {
+            if (itemTemp != existing.washTemp) return false;
+        } else {
+            // relaxed: allow warm with hot
+            if ((itemTemp == "cold" && existing.washTemp != "cold") || (itemTemp != "cold" && existing.washTemp == "cold"))
+                return false;
+        }
 
-        // Constraint: Delicate items separated
-        if (item.isDelicate() != existing.isDelicate()) return false;
+        // Delicate mixing
+        if (item.delicate || existing.delicate)
+            return false;
 
-        // Optional: Dry-safe conflict
-        if (item.isDrySafe() != existing.isDrySafe()) return false;
+        // Dry-safe is not enforced in grouping; used only for drying program
     }
 
     return true;
 }
-
