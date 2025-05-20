@@ -19,7 +19,7 @@ vector<vector<Item>> Backtracking::pack() {
 
 void Backtracking::backtrack(int index, vector<vector<Item>>& currentLoads) {
     if (index == items.size()) {
- 
+
         if (bestSolution.empty() || currentLoads.size() < bestSolution.size()) {
             bestSolution = currentLoads;
         }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include <vector>
 #include <string>
 #include "Item.h"
@@ -36,10 +37,11 @@ int main() {
 
     cout << "Enter number of laundry items: ";
     cin >> n;
-    cin.ignore(); // consume leftover newline
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear input buffer properly
+
     string relaxedModeStr;
     cout << "Enable relaxed mode (safe compromises)? (yes/no): ";
-    cin >> relaxedModeStr;
+    getline(cin, relaxedModeStr); // Use getline for consistency
     bool relaxedMode = (relaxedModeStr == "yes");
 
     for (int i = 0; i < n; ++i) {
@@ -50,6 +52,8 @@ int main() {
 
         cout << "Name: ";
         getline(cin, name);
+
+
 
         set<string> whiteColors = {"white"};
         set<string> lightColors = {"beige", "cream", "light gray", "pastel pink", "sky blue", "blue", "pink", "mauve", "green", "light"};
@@ -89,6 +93,7 @@ int main() {
     int maxLoadSize;
     cout << "\nEnter maximum load size (number of items per load): ";
     cin >> maxLoadSize;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear buffer after numeric input
 
     bool separateWhites = true;  // default if strict
 
