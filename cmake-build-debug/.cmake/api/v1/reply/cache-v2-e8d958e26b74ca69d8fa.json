@@ -67,7 +67,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/ASUS/Desktop/OptiWash/cmake-build-debug"
+			"value" : "c:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -587,7 +587,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -1607,7 +1607,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps"
 		},
 		{
 			"name" : "FETCHCONTENT_FULLY_DISCONNECTED",
@@ -1715,7 +1715,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug"
 		},
 		{
 			"name" : "OptiWash_IS_TOP_LEVEL",
@@ -1739,7 +1739,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
@@ -1859,7 +1859,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps/googletest-build/googletest/generated"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps/googletest-build/googletest/generated"
 		},
 		{
 			"name" : "gmock_BINARY_DIR",
@@ -1871,7 +1871,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps/googletest-build/googlemock"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps/googletest-build/googlemock"
 		},
 		{
 			"name" : "gmock_IS_TOP_LEVEL",
@@ -1895,7 +1895,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src/googlemock"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src/googlemock"
 		},
 		{
 			"name" : "gmock_build_tests",
@@ -1923,7 +1923,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps/googletest-build"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps/googletest-build"
 		},
 		{
 			"name" : "googletest-distribution_IS_TOP_LEVEL",
@@ -1947,7 +1947,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src"
 		},
 		{
 			"name" : "gtest_BINARY_DIR",
@@ -1959,7 +1959,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps/googletest-build/googletest"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps/googletest-build/googletest"
 		},
 		{
 			"name" : "gtest_IS_TOP_LEVEL",
@@ -1983,7 +1983,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src/googletest"
+			"value" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src/googletest"
 		},
 		{
 			"name" : "gtest_build_samples",

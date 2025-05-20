@@ -21,8 +21,7 @@ public:
     static int getWashingDuration(const string& program);
     static int getDryingDuration(const string& program);
 
-    // Estimate total laundry time based on loads and machine counts
-    int estimateTotalLaundryTime(const vector<vector<Item>>& loads,
+     int estimateTotalLaundryTime(const vector<vector<Item>>& loads,
                                  int washers, int dryers,
                                  const LaundryProgramDatabase& db);
 

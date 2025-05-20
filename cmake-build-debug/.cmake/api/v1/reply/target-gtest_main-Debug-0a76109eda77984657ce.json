@@ -97,12 +97,12 @@
 				{
 					"backtrace" : 7,
 					"isSystem" : true,
-					"path" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src/googletest/include"
+					"path" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src/googletest/include"
 				},
 				{
 					"backtrace" : 7,
 					"isSystem" : true,
-					"path" : "C:/Users/ASUS/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src/googletest"
+					"path" : "C:/Users/ASUS/Desktop/Desktop/OptiWash/cmake-build-debug/_deps/googletest-src/googletest"
 				}
 			],
 			"language" : "CXX",

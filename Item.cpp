@@ -76,8 +76,6 @@ bool Item::isCompatibleWithLoad(const Item& item, const vector<Item>& load, int 
         // Delicate mixing
         if (item.delicate || existing.delicate)
             return false;
-
-        // Dry-safe is not enforced in grouping; used only for drying program
     }
 
     return true;

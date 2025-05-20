@@ -19,7 +19,7 @@ vector<vector<Item>> Backtracking::pack() {
 
 void Backtracking::backtrack(int index, vector<vector<Item>>& currentLoads) {
     if (index == items.size()) {
-        // All items assigned, check if better than bestSolution
+ 
         if (bestSolution.empty() || currentLoads.size() < bestSolution.size()) {
             bestSolution = currentLoads;
         }
@@ -28,7 +28,7 @@ void Backtracking::backtrack(int index, vector<vector<Item>>& currentLoads) {
 
     const Item& item = items[index];
 
-    // Try adding to existing loads
+
     for (int i = 0; i < (int)currentLoads.size(); ++i) {
         if (Item::isCompatibleWithLoad(item, currentLoads[i], maxLoadSize, separateWhites, relaxedMode)) {
             currentLoads[i].push_back(item);
@@ -38,7 +38,7 @@ void Backtracking::backtrack(int index, vector<vector<Item>>& currentLoads) {
 
     }
 
-    // Try creating a new load
+
     currentLoads.push_back({item});
     backtrack(index + 1, currentLoads);
     currentLoads.pop_back();

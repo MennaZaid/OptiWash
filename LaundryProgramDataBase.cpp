@@ -14,11 +14,11 @@ unordered_map<string, int> LaundryProgramDatabase::washingPrograms = {
 unordered_map<string, int> LaundryProgramDatabase::dryingPrograms = {
     {"Cotton", 120},
     {"Speed 30", 30},
-    {"Easy Care", 80},        // 1:20 hrs = 80 minutes
+    {"Easy Care", 80},
     {"Wool", 29},
     {"Sports Wear", 50},
     {"Allergy Care", 180},
-    {"Duvet", 175},           // 2:55 hrs = 175 minutes
+    {"Duvet", 175},
     {"Bedding Refresh", 50},
     {"Down Jacket Refresh", 25},
     {"Warm Air", 60},

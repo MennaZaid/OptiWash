@@ -8,7 +8,7 @@
 #include<set>
 using namespace std;
 
-// Helper to print loads and their programs
+
 void printLoads(const vector<vector<Item>>& loads,
                 const vector<string>& washPrograms,
                 const vector<string>& dryPrograms,
@@ -109,24 +109,24 @@ int main() {
     cout << "Enter number of dryers available: ";
     cin >> dryers;
 
-    // Run Greedy packing
+
     Greedy greedyPacker(items, maxLoadSize, separateWhites, relaxedMode);
     vector<vector<Item>> greedyLoads = greedyPacker.pack();
 
-    // Assign programs
+
     vector<string> greedyWashPrograms, greedyDryPrograms;
     for (const auto& load : greedyLoads) {
        greedyWashPrograms.push_back(LaundryProgramDatabase::selectWashingProgram(load));
  greedyDryPrograms.push_back(LaundryProgramDatabase::selectDryingProgram(load));
     }
 
-    // Estimate time
+
     int greedyTotalTime = calculateLaundryTime(greedyWashPrograms, greedyDryPrograms, washers, dryers, LaundryProgramDatabase());
 
     printLoads(greedyLoads, greedyWashPrograms, greedyDryPrograms, "Greedy Packing Result");
     cout << "Estimated total laundry time (Greedy): " << greedyTotalTime << " minutes.\n\n";
 
-    // Run Backtracking packing
+
     Backtracking backtrackingPacker(items, maxLoadSize, separateWhites, relaxedMode);
     vector<vector<Item>> backtrackingLoads = backtrackingPacker.pack();
 
